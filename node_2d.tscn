@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b1wxgmc1k8mi2"]
+
+[ext_resource type="Texture2D" uid="uid://bpppets131m5i" path="res://icon.svg" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://jv10fferet5o" path="res://character_body_2d.gd" id="2_epypp"]
+[ext_resource type="Script" uid="uid://cwfuexaasir8f" path="res://enemigo.gd" id="3_epypp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
+size = Vector2(2425, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
+size = Vector2(60, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(67, 154)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
+size = Vector2(35, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(65, 10)
+
+[node name="Node2D" type="Node2D" unique_id=689806607]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1028409793]
+position = Vector2(6, 223)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=109989781]
+position = Vector2(-1.5, -3)
+shape = SubResource("RectangleShape2D_lfkbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=873128566]
+scale = Vector2(18.987865, 0.46832722)
+texture = ExtResource("1_0e48y")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=475459423]
+position = Vector2(-754, 67)
+script = ExtResource("2_epypp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1612844962]
+scale = Vector2(0.473138, 1.0588201)
+texture = ExtResource("1_0e48y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=311175674]
+shape = SubResource("RectangleShape2D_aui74")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=532407133]
+
+[node name="Enemigo" type="CharacterBody2D" parent="." unique_id=1120407916]
+position = Vector2(5, 55)
+script = ExtResource("3_epypp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemigo" unique_id=492527109]
+scale = Vector2(0.5351221, 1.2162069)
+texture = ExtResource("1_0e48y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo" unique_id=1833770959]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="RayCast2D" type="RayCast2D" parent="Enemigo" unique_id=307671429]
+target_position = Vector2(-354, 0)
+
+[node name="AreaIzquierda" type="Area2D" parent="Enemigo" unique_id=1969462259]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo/AreaIzquierda" unique_id=523861215]
+position = Vector2(-54, -22)
+shape = SubResource("RectangleShape2D_vicex")
+
+[node name="AreaSuperior" type="Area2D" parent="Enemigo" unique_id=1209558072]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo/AreaSuperior" unique_id=991529777]
+position = Vector2(-0.5, -84)
+shape = SubResource("RectangleShape2D_epypp")
+
+[connection signal="body_entered" from="Enemigo/AreaIzquierda" to="CharacterBody2D" method="_on_area_izquierda_body_entered"]
+[connection signal="body_entered" from="Enemigo/AreaSuperior" to="CharacterBody2D" method="_on_area_superior_body_entered"]
