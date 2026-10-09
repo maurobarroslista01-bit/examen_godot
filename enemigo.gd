@@ -14,7 +14,9 @@ func _physics_process(delta: float) -> void:
 	
 	if $RayCast2D.is_colliding():
 		velocity.x = SPEED * (-2)
+	else:
+		velocity.x = SPEED * (-1)
 	move_and_slide()
 
-func _on_area_superior_body_entered(body: CharacterBody2D) -> void:
+func _on_area_superior_body_entered(body: Node2D) -> void:
 	queue_free()

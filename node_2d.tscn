@@ -33,7 +33,7 @@ scale = Vector2(18.987865, 0.46832722)
 texture = ExtResource("1_0e48y")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=475459423]
-position = Vector2(-754, 67)
+position = Vector2(304, 16)
 script = ExtResource("2_epypp")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1612844962]
@@ -46,7 +46,7 @@ shape = SubResource("RectangleShape2D_aui74")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=532407133]
 
 [node name="Enemigo" type="CharacterBody2D" parent="." unique_id=1120407916]
-position = Vector2(5, 55)
+position = Vector2(876, 61)
 script = ExtResource("3_epypp")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemigo" unique_id=492527109]
